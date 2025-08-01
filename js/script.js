@@ -40,7 +40,7 @@ function displayMessage(message, type = "info") {
     return;
   }
   const parentContainer = document.createElement('div');
-  parentContainer.classList.add('message-box-container', 'fixed', 'inset-0', 'flex', 'items-start', 'justify-center', 'z-50');
+  parentContainer.classList.add('message-box-container', 'max-h-[50px]', 'fixed', 'inset-0', 'flex', 'items-start', 'justify-center', 'z-50');
 
   const messageBox = document.createElement('div');
   messageBox.classList.add(
