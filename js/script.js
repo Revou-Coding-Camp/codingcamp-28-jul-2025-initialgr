@@ -144,7 +144,6 @@ function handleMessageFormSubmit(e) {
   const email = emailInput.value.trim();
   const phone = phoneInput.value.trim();
   const message = messageInput.value.trim();
-  const privacyPolicyCheckbox = document.getElementById('privacy-policy');
 
   // Validation
   if (!fullName) { displayMessage("Please enter your full name.", "error"); fullNameInput.focus(); return; }
@@ -153,7 +152,6 @@ function handleMessageFormSubmit(e) {
   if (!emailRegex.test(email)) { displayMessage("Please enter a valid email address.", "error"); emailInput.focus(); return; }
   if (phone && !/^\d+$/.test(phone)) { displayMessage("Please enter a valid phone number (digits only).", "error"); phoneInput.focus(); return; }
   if (!message) { displayMessage("Please enter your message.", "error"); messageInput.focus(); return; }
-  if (!privacyPolicyCheckbox || !privacyPolicyCheckbox.checked) { displayMessage("Please agree to the privacy policy.", "error"); return; }
 
   // If valid, process submission
   const formData = {
