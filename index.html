@@ -1,25 +1,40 @@
+<!-- 
+  This is the main HTML document for the KOSANA property website.
+  The structure is designed to be responsive and uses Tailwind CSS for styling.
+  It includes sections for a hero banner, a property search form, a popular
+  listings slider, and a contact form.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Basic meta tags for character set and viewport, essential for all web pages. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KOSANA - Find Your Ideal Property</title>
+
+  <!-- External CSS and JS libraries for styling, icons, and functionality. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper library for the "Popular Property" image slider. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+  <!-- Custom project-specific files. -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Custom Color -->
   <script src="js/tailwind.config.js"></script>
-
 </head>
 
 <body class="bg-slate-50">
+  <!-- 
+    Main navigation bar.
+    The 'sticky top-0 z-10' classes ensure the navigation remains at the top
+    of the viewport, even when the user scrolls down.
+  -->
   <nav class="flex items-center justify-between p-4 bg-white shadow-sm sticky top-0 rounded-lg m-4 z-10">
+    <!-- Brand logo and desktop navigation links. -->
     <div class="flex items-center space-x-8">
       <div class="flex items-center space-x-2">
         <i class="fa-solid fa-building text-custom-orange-600"></i>
@@ -33,6 +48,8 @@
         <a href="#" class="hover:text-custom-orange-600 transition duration-300">Services</a>
       </div>
     </div>
+
+    <!-- Sign in/sign up buttons and mobile menu toggle. -->
     <div class="flex items-center space-x-4">
       <a href="#" class="text-gray-600 hover:text-custom-orange-600 transition duration-300 hidden sm:block">Sign Up</a>
       <a href="#"
@@ -45,6 +62,7 @@
     </div>
   </nav>
 
+  <!-- The mobile menu dropdown, toggled by the mobile-menu-button. -->
   <div id="mobile-menu" class="hidden bg-white shadow-lg rounded-lg mx-4 mb-4 py-2 sticky top-20 z-10">
     <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Home</a>
     <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">About
@@ -59,85 +77,93 @@
     <a href="#" class="block px-4 py-2 text-custom-orange-600 font-semibold hover:bg-custom-orange-50">Sign In</a>
   </div>
 
-  <header class="hero-section min-h-[80vh] flex flex-col items-center justify-center text-center pb-40 px-4">
-    <div class="relative p-4">
-      <h1 id="heroTitle" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-        Welcome <span id="userNameDisplay" class="text-custom-orange-600">
-      </h1>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
-        Find Your Ideal Property
-      </h1>
-      <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-        Discover a wide range of homes, apartments, and investment properties tailored to your needs and budget. Start
-        your search now and make your dream of homeownership a reality.
-      </p>
+  <main>
+    <!-- 
+      Hero section with a dynamic title that can be personalized.
+      The search form is positioned to overlap the section below,
+      creating a visually interesting layout.
+    -->
+    <header class="hero-section min-h-[80vh] flex flex-col items-center justify-center text-center pb-40 px-4">
+      <div class="relative p-4">
+        <h1 id="heroTitle" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          Welcome <span id="userNameDisplay" class="text-custom-orange-600"></span>
+        </h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+          Find Your Ideal Property
+        </h1>
+        <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+          Discover a wide range of homes, apartments, and investment properties tailored to your needs and budget. Start
+          your search now and make your dream of homeownership a reality.
+        </p>
 
-      <div class="flex justify-center relative mx-auto max-w-full sm:max-w-4xl w-full">
-        <button
-          class="px-6 py-2 sm:px-8 sm:py-3 rounded-tl-lg transition duration-300 font-semibold search-tab-active text-white text-sm sm:text-base"
-          id="buy-tab">Buy</button>
-        <button
-          class="px-6 py-2 sm:px-8 sm:py-3 transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
-          id="sell-tab">Sell</button>
-        <button
-          class="px-6 py-2 sm:px-8 sm:py-3 rounded-tr-lg transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
-          id="rent-tab">Rent</button>
-      </div>
-
-      <div
-        class="bg-white p-2 rounded-xl shadow-lg inline-block mx-auto max-w-full sm:max-w-4xl w-full relative z-0 sm:mt-0 -mb-20">
-        <div class="flex flex-wrap items-center justify-center p-4">
-          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
-            <label for="location" class="font-semibold text-base sm:text-xl">Location</label>
-            <div class="relative">
-              <select id="location"
-                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
-                <option>Sleman, Yogyakarta</option>
-                <option>Jakarta, Indonesia</option>
-                <option>Bandung, Indonesia</option>
-              </select>
-              <i
-                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-            </div>
-          </div>
-          <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
-          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
-            <label for="unit-type" class="font-semibold text-base sm:text-xl">Unit Type</label>
-            <div class="relative">
-              <select id="unit-type"
-                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
-                <option>House</option>
-                <option>Apartment</option>
-                <option>Commercial</option>
-              </select>
-              <i
-                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-            </div>
-          </div>
-          <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
-          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
-            <label for="price-range" class="font-semibold text-base sm:text-xl">Price Range</label>
-            <div class="relative">
-              <select id="price-range"
-                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
-                <option>$100,000 - $500,000</option>
-                <option>$500,000 - $1,000,000</option>
-                <option>$1,000,000+</option>
-              </select>
-              <i
-                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-            </div>
-          </div>
+        <!-- Search tabs (Buy, Sell, Rent) -->
+        <div class="flex justify-center relative mx-auto max-w-full sm:max-w-4xl w-full">
           <button
-            class="bg-custom-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-custom-orange-700 transition duration-300 w-full sm:w-auto mt-4 sm:mt-0">
-            Search
-          </button>
+            class="px-6 py-2 sm:px-8 sm:py-3 rounded-tl-lg transition duration-300 font-semibold search-tab-active text-white text-sm sm:text-base"
+            id="buy-tab">Buy</button>
+          <button
+            class="px-6 py-2 sm:px-8 sm:py-3 transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+            id="sell-tab">Sell</button>
+          <button
+            class="px-6 py-2 sm:px-8 sm:py-3 rounded-tr-lg transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+            id="rent-tab">Rent</button>
+        </div>
+
+        <!-- The main search form with dropdowns for location, unit type, and price range. -->
+        <div
+          class="bg-white p-2 rounded-xl shadow-lg inline-block mx-auto max-w-full sm:max-w-4xl w-full relative z-0 sm:mt-0 -mb-20">
+          <div class="flex flex-wrap items-center justify-center p-4">
+            <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+              <label for="location" class="font-semibold text-base sm:text-xl">Location</label>
+              <div class="relative">
+                <select id="location"
+                  class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                  <option>Sleman, Yogyakarta</option>
+                  <option>Jakarta, Indonesia</option>
+                  <option>Bandung, Indonesia</option>
+                </select>
+                <i
+                  class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+              </div>
+            </div>
+            <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
+            <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+              <label for="unit-type" class="font-semibold text-base sm:text-xl">Unit Type</label>
+              <div class="relative">
+                <select id="unit-type"
+                  class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                  <option>House</option>
+                  <option>Apartment</option>
+                  <option>Commercial</option>
+                </select>
+                <i
+                  class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+              </div>
+            </div>
+            <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
+            <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+              <label for="price-range" class="font-semibold text-base sm:text-xl">Price Range</label>
+              <div class="relative">
+                <select id="price-range"
+                  class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                  <option>$100,000 - $500,000</option>
+                  <option>$500,000 - $1,000,000</option>
+                  <option>$1,000,000+</option>
+                </select>
+                <i
+                  class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+              </div>
+            </div>
+            <button
+              class="bg-custom-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-custom-orange-700 transition duration-300 w-full sm:w-auto mt-4 sm:mt-0">
+              Search
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
+    <!-- Section highlighting high-demand areas with a grid of location cards. -->
     <section class="container mx-auto px-4 py-12 mt-12 lg:mb-16">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight text-center">High Demand
         Area</h1>
@@ -146,6 +172,7 @@
         booking options.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Reusable card component for different locations. -->
         <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
           <img src="img/location-1.png" alt="Property in Bali"
             class="h-[300px] sm:h-[400px] lg:h-[460px] w-full object-cover" />
@@ -176,10 +203,10 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
+    <!-- Section promoting virtual tours and interactive maps. -->
     <section class="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between gap-10">
       <div class="flex-1 max-w-xl text-center lg:text-left">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
@@ -201,6 +228,11 @@
       </div>
     </section>
 
+    <!--
+      "Popular Property" section with a horizontal scrolling slider.
+      JavaScript will be used to populate this container with property cards.
+      The `no-scrollbar` class is a custom utility to hide the scrollbar.
+    -->
     <section class="container mx-auto px-4 py-12 bg-gray-50 rounded-xl">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 text-center sm:text-left">
@@ -211,6 +243,7 @@
               descriptions, and convenient booking options.
             </p>
           </div>
+          <!-- Navigation buttons for the slider. -->
           <div class="flex space-x-4 mt-6 sm:mt-0">
             <button id="scrollLeftBtn"
               class="p-3 bg-white rounded-full shadow-md text-gray-700 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-custom-orange-500"
@@ -232,11 +265,9 @@
             </button>
           </div>
         </div>
-
         <div id="propertySlider"
           class="flex overflow-x-scroll no-scrollbar space-x-6 pb-4 scroll-smooth snap-x snap-mandatory">
         </div>
-
         <div class="text-center mt-12">
           <button
             class="px-8 py-3 bg-custom-orange-600 text-white font-semibold rounded-lg shadow-md hover:bg-custom-orange-700 transition-colors duration-200 focus:outline-none focus:ring-custom-orange-500 focus:ring-offset-2 lg:mb-8">
@@ -246,13 +277,16 @@
       </div>
     </section>
 
+    <!-- 
+      Expert guidance section with an agent's contact card.
+      The agent card is positioned absolutely to overlap the property image.
+    -->
     <section
       class="container mx-auto px-4 py-12 rounded-xl flex flex-col gap-10 justify-between lg:flex-row items-center">
       <div class="relative w-full lg:w-1/2 flex justify-center">
         <div class="w-full rounded-xl overflow-hidden">
           <img src="img/agent-property.png" alt="The West Progo Regency"
             class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl" />
-
           <div class="absolute top-4 left-4 bg-white rounded-lg p-3 shadow-md flex items-center space-x-2">
             <div class="flex flex-col">
               <h3 class="text-lg font-semibold text-gray-900">The West Progo Regency</h3>
@@ -262,7 +296,10 @@
               </p>
             </div>
           </div>
-
+          <!-- 
+            The agent card is a link, allowing users to easily
+            contact the agent.
+          -->
           <a href="https://www.linkedin.com/in/gilang-gr/" target="_blank" rel="noopener noreferrer">
             <section
               class="cursor-pointer absolute -bottom-16 lg:left-[80%] left-[50%] -translate-x-1/2 bg-white rounded-xl p-4 min-w-[290px] shadow-md space-x-2 flex items-start transition hover:shadow-lg">
@@ -301,6 +338,10 @@
       </div>
     </section>
 
+    <!-- 
+      Call to action section with a contact form.
+      The form is positioned as an overlay on the accompanying image.
+    -->
     <section class="bg-[#ff9900] lg:mt-32">
       <div class="md:pl-8 flex flex-col md:flex-row items-center justify-between relative text-center md:text-left">
         <div class="text-white max-w-xl mb-8 md:mb-0 md:pl-12 px-6">
@@ -323,7 +364,6 @@
         <div class="w-full lg:w-1/2 md:flex md:justify-end relative">
           <img src="img/contact-us.png" alt="Property Image"
             class="shadow-xl w-full h-[250px] md:h-[350px] object-cover">
-
           <div
             class="absolute md:top-1/2 top-[15%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-2xl w-11/12 md:w-4/5 lg:w-3/5 text-start">
             <form class="space-y-6" id="messageForm">
@@ -332,19 +372,16 @@
                 <input type="text" id="full-name" name="full-name" placeholder="Enter your full name here"
                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
               </div>
-
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email here"
                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
               </div>
-
               <div>
                 <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone Number</label>
                 <input type="number" id="phone-number" name="phone-number" placeholder="Enter your phone number here"
                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
               </div>
-
               <div>
                 <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
                 <textarea id="message" name="message" rows="4" placeholder="Your message for us..."
@@ -359,11 +396,12 @@
         </div>
       </div>
     </section>
-
   </main>
 
+  <!-- Main footer of the website. -->
   <footer class="bg-white py-12 px-4 rounded-t-lg shadow-inner mt-20 md:mt-32">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+      <!-- Brand information and social media links. -->
       <div>
         <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
           <i class="fa-solid fa-building text-custom-orange-600"></i> <span
@@ -377,6 +415,7 @@
           <a href="#" class="text-gray-600 hover:text-custom-orange-600"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
+      <!-- Quick links section. -->
       <div>
         <h4 class="font-semibold text-gray-800 mb-4">Quick Links</h4>
         <ul class="space-y-2 text-gray-600">
@@ -387,6 +426,7 @@
           <li><a href="#" class="hover:text-custom-orange-600">Services</a></li>
         </ul>
       </div>
+      <!-- Contact information. -->
       <div>
         <h4 class="font-semibold text-gray-800 mb-4">Contact Us</h4>
         <ul class="space-y-2 text-gray-600">
@@ -395,6 +435,7 @@
           <li><i class="fas fa-envelope mr-2"></i> info@kosana.com</li>
         </ul>
       </div>
+      <!-- Newsletter subscription form. -->
       <div>
         <h4 class="font-semibold text-gray-800 mb-4">Newsletter</h4>
         <p class="text-gray-600 mb-4">Stay updated with our latest listings and offers.</p>
@@ -413,16 +454,17 @@
     </div>
   </footer>
 
-  <!-- Success Modal -->
+  <!-- 
+    Modals for user interaction. Hidden by default.
+    These are positioned as fixed overlays to appear above all other content.
+  -->
   <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
       <div class="text-green-500 text-5xl mb-4 text-center">
         <i class="fas fa-check-circle"></i>
       </div>
       <h2 class="text-2xl font-bold mb-4 text-center">Message Sent Successfully!</h2>
-
       <div id="submittedData" class="mb-6 text-left space-y-2"></div>
-
       <button id="closeModal"
         class="w-full bg-custom-orange-600 text-white py-2 rounded hover:bg-custom-orange-700 transition">
         Close
@@ -430,7 +472,6 @@
     </div>
   </div>
 
-  <!-- Welcome Modal -->
   <div id="welcomeModal" class="fixed hidden inset-0 bg-black bg-opacity-50 flex items-center justify-center px-5 z-20">
     <div class="bg-white p-8 rounded-lg max-w-md w-full">
       <h2 class="text-2xl font-bold mb-4">Find Your Property Here</h2>
@@ -443,6 +484,7 @@
     </div>
   </div>
 
+  <!-- Main JavaScript file for all page interactivity. -->
   <script src="js/script.js"></script>
 </body>
 
