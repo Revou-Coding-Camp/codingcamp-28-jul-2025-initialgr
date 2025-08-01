@@ -11,6 +11,7 @@ const submitBtn = document.getElementById('submitName');
 const userNameDisplay = document.getElementById('userNameDisplay');
 
 const messageForm = document.getElementById('messageForm');
+const subscribeForm = document.getElementById('subscribeForm');
 const successModal = document.getElementById('successModal');
 const submittedData = document.getElementById('submittedData');
 const closeModal = document.getElementById('closeModal');
@@ -51,8 +52,8 @@ function displayMessage(message, type = "info") {
     messageBox.classList.add('bg-red-500');
   } else if (type === "success") {
     messageBox.classList.add('bg-green-500');
-  } 
-  
+  }
+
   messageBox.textContent = message;
 
   parentContainer.appendChild(messageBox);
@@ -176,7 +177,35 @@ function handleMessageFormSubmit(e) {
   if (successModal) successModal.classList.remove('hidden');
 }
 
-// --- 3. Close Modal Logic ---
+// --- 3. Subscribe Form Logic ---
+function handleSubscribeFormSubmit(e) {
+  e.preventDefault();
+
+  const subscribeEmailInput = subscribeForm.querySelector('input[type="email"]');
+  const email = subscribeEmailInput.value.trim();
+
+  // Validation
+  if (!email) {
+    displayMessage("Please enter your email address.", "error");
+    subscribeEmailInput.focus();
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    displayMessage("Please enter a valid email address.", "error");
+    subscribeEmailInput.focus();
+    return;
+  }
+
+  // If valid, process submission
+  // You can send this data to a server or just confirm to the user
+  console.log('Subscribe form submitted with email:', email);
+  displayMessage("Thank you for subscribing!", "success");
+  subscribeForm.reset();
+}
+
+// --- 4. Close Modal Logic ---
 function handleCloseModal() {
   if (successModal) successModal.classList.add('hidden');
   messageForm.reset();
@@ -187,7 +216,7 @@ function handleCloseModal() {
   }, 1500);
 }
 
-// --- 4. Mobile Menu Logic ---
+// --- 5. Mobile Menu Logic ---
 function initMobileMenu() {
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', (event) => {
@@ -207,7 +236,7 @@ function initMobileMenu() {
   }
 }
 
-// --- 5. Tab Switching Logic ---
+// --- 6. Tab Switching Logic ---
 function initTabSwitching() {
   tabs.forEach(tabElement => {
     tabElement.addEventListener('click', () => {
@@ -221,7 +250,7 @@ function initTabSwitching() {
   });
 }
 
-// --- 6. Property Slider Logic ---
+// --- 7. Property Slider Logic ---
 function renderProperties() {
   if (!slider) return;
   slider.innerHTML = '';
@@ -299,6 +328,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if (closeModal) {
     closeModal.addEventListener('click', handleCloseModal);
+  }
+
+  // Attach the event listener for the subscribe form
+  if (subscribeForm) {
+    subscribeForm.addEventListener('submit', handleSubscribeFormSubmit);
   }
 
   // Initialize the property slider
