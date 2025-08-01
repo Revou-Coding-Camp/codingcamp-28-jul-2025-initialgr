@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOSANA - Find Your Ideal Property</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="bg-slate-50">
+  <nav class="flex items-center justify-between p-4 bg-white shadow-sm sticky top-0 z-50 rounded-lg m-4">
+    <div class="flex items-center space-x-8">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-building text-orange-500"></i>
+        <span class="font-bold text-xl text-gray-800">KOSANA</span>
+      </div>
+      <div class="hidden md:flex space-x-6 text-gray-600">
+        <a href="#" class="hover:text-custom-orange-600 transition duration-300">Home</a>
+        <a href="#" class="hover:text-custom-orange-600 transition duration-300">About Us</a>
+        <a href="#" class="hover:text-custom-orange-600 transition duration-300">Product</a>
+        <a href="#" class="hover:text-custom-orange-600 transition duration-300">Mortgage</a>
+        <a href="#" class="hover:text-custom-orange-600 transition duration-300">Services</a>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <a href="#" class="text-gray-600 hover:text-custom-orange-600 transition duration-300 hidden sm:block">Sign Up</a>
+      <a href="#"
+        class="bg-custom-orange-600 text-white px-5 py-2 rounded-lg hover:bg-custom-orange-700 transition duration-300 hidden sm:block">Sign
+        In</a>
+      <button id="mobile-menu-button"
+        class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-custom-orange-500">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden bg-white shadow-lg rounded-lg mx-4 mb-4 py-2 sticky top-20 z-50">
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Home</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">About
+      Us</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Product</a>
+    <a href="#"
+      class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Mortgage</a>
+    <a href="#"
+      class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Services</a>
+    <div class="border-t border-gray-100 my-2"></div>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-custom-orange-50 hover:text-custom-orange-600">Sign Up</a>
+    <a href="#" class="block px-4 py-2 text-custom-orange-600 font-semibold hover:bg-custom-orange-50">Sign In</a>
+  </div>
+
+  <header class="hero-section min-h-[80vh] flex flex-col items-center justify-center text-center pb-40 px-4">
+    <div class="relative z-10 p-4">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+        Find Your Ideal Property
+      </h1>
+      <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+        Discover a wide range of homes, apartments, and investment properties tailored to your needs and budget. Start
+        your search now and make your dream of homeownership a reality.
+      </p>
+
+      <div class="flex justify-center relative mx-auto max-w-full sm:max-w-4xl w-full">
+        <button
+          class="px-6 py-2 sm:px-8 sm:py-3 rounded-tl-lg transition duration-300 font-semibold search-tab-active text-white text-sm sm:text-base"
+          id="buy-tab">Buy</button>
+        <button
+          class="px-6 py-2 sm:px-8 sm:py-3 transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+          id="sell-tab">Sell</button>
+        <button
+          class="px-6 py-2 sm:px-8 sm:py-3 rounded-tr-lg transition duration-300 font-semibold bg-white text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+          id="rent-tab">Rent</button>
+      </div>
+
+      <div
+        class="bg-white p-2 rounded-xl shadow-lg inline-block mx-auto max-w-full sm:max-w-4xl w-full relative z-0 sm:mt-0 -mb-20">
+        <div class="flex flex-wrap items-center justify-center p-4">
+          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+            <label for="location" class="font-semibold text-base sm:text-xl">Location</label>
+            <div class="relative">
+              <select id="location"
+                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                <option>Sleman, Yogyakarta</option>
+                <option>Jakarta, Indonesia</option>
+                <option>Bandung, Indonesia</option>
+              </select>
+              <i
+                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+            </div>
+          </div>
+          <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
+          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+            <label for="unit-type" class="font-semibold text-base sm:text-xl">Unit Type</label>
+            <div class="relative">
+              <select id="unit-type"
+                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                <option>House</option>
+                <option>Apartment</option>
+                <option>Commercial</option>
+              </select>
+              <i
+                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+            </div>
+          </div>
+          <div class="hidden sm:block border-x h-14 border-gray-100 mx-4"></div>
+          <div class="flex-1 min-w-[200px] mb-4 sm:mb-0 text-start w-full sm:w-auto">
+            <label for="price-range" class="font-semibold text-base sm:text-xl">Price Range</label>
+            <div class="relative">
+              <select id="price-range"
+                class="w-full py-2 sm:py-3 rounded-lg appearance-none bg-white pr-8 focus:outline-none text-sm sm:text-base">
+                <option>$100,000 - $500,000</option>
+                <option>$500,000 - $1,000,000</option>
+                <option>$1,000,000+</option>
+              </select>
+              <i
+                class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+            </div>
+          </div>
+          <button
+            class="bg-custom-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-custom-orange-700 transition duration-300 w-full sm:w-auto mt-4 sm:mt-0">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container mx-auto px-4 py-12 mt-12 lg:mb-16">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight text-center">High Demand
+        Area</h1>
+      <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-10 text-center">
+        Explore our collection of stunning property listing with beautiful images, detailed descriptions, and convenient
+        booking options.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+          <img src="img/location-1.png" alt="Property in Bali"
+            class="h-[300px] sm:h-[400px] lg:h-[460px] w-full object-cover" />
+          <div class="relative">
+            <div class="absolute bottom-3 left-3 right-3 bg-white rounded-xl px-4 py-3 shadow">
+              <h2 class="text-xl sm:text-2xl mb-2 font-semibold text-gray-900">Bali</h2>
+              <p class="text-sm sm:text-md text-gray-500">684 property listing</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+          <img src="img/location-2.png" alt="Property in Malang"
+            class="h-[300px] sm:h-[400px] lg:h-[460px] w-full object-cover" />
+          <div class="relative">
+            <div class="absolute bottom-3 left-3 right-3 bg-white rounded-xl px-4 py-3 shadow">
+              <h2 class="text-xl sm:text-2xl mb-2 font-semibold text-gray-900">Malang</h2>
+              <p class="text-sm sm:text-md text-gray-500">468 property listing</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+          <img src="img/location-3.png" alt="Property in Yogyakarta"
+            class="h-[300px] sm:h-[400px] lg:h-[460px] w-full object-cover" />
+          <div class="relative">
+            <div class="absolute bottom-3 left-3 right-3 bg-white rounded-xl px-4 py-3 shadow">
+              <h2 class="text-xl sm:text-2xl mb-2 font-semibold text-gray-900">Yogyakarta</h2>
+              <p class="text-sm sm:text-md text-gray-500">452 property listing</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div class="flex-1 max-w-xl text-center lg:text-left">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+          Virtual Tours &<br />Interactive Maps
+        </h2>
+        <p class="text-gray-500 text-base sm:text-lg mb-8">
+          Explore from Anywhere: Take virtual tours of our listings from home.
+          Our interactive maps help you visualize the neighborhood, making it
+          easy to find the perfect property.
+        </p>
+        <button
+          class="bg-custom-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-custom-orange-700 transition">
+          Learn More
+        </button>
+      </div>
+
+      <div class="flex-1 relative w-full h-[300px] sm:h-[450px] lg:h-[550px] lg:pl-12 ">
+        <img src="img/virtual-tour.png" alt="Modern Villa" class="rounded-xl object-cover w-full h-full" />
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 py-12 bg-gray-50 rounded-xl">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 text-center sm:text-left">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Popular Property</h2>
+            <p class="text-gray-600 max-w-lg mx-auto sm:mx-0">
+              Explore our collection of stunning property listings with beautiful images, detailed
+              descriptions, and convenient booking options.
+            </p>
+          </div>
+          <div class="flex space-x-4 mt-6 sm:mt-0">
+            <button id="scrollLeftBtn"
+              class="p-3 bg-white rounded-full shadow-md text-gray-700 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-custom-orange-500"
+              aria-label="Previous property">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucude-chevron-left">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button id="scrollRightBtn"
+              class="p-3 bg-custom-orange-600 rounded-full shadow-md text-white hover:bg-custom-orange-700 transition-colors duration-200 focus:outline-none focus:ring-custom-orange-500"
+              aria-label="Next property">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-chevron-right">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="propertySlider"
+          class="flex overflow-x-scroll no-scrollbar space-x-6 pb-4 scroll-smooth snap-x snap-mandatory">
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="px-8 py-3 bg-custom-orange-600 text-white font-semibold rounded-lg shadow-md hover:bg-custom-orange-700 transition-colors duration-200 focus:outline-none focus:ring-custom-orange-500 focus:ring-offset-2 lg:mb-8">
+            See More
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="container mx-auto px-4 py-12 rounded-xl flex flex-col gap-10 justify-between lg:flex-row items-center">
+      <div class="relative w-full lg:w-1/2 flex justify-center">
+        <div class="w-full rounded-xl overflow-hidden">
+          <img src="img/agent-property.png" alt="The West Progo Regency"
+            class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl" />
+
+          <div class="absolute top-4 left-4 bg-white rounded-lg p-3 shadow-md flex items-center space-x-2">
+            <div class="flex flex-col">
+              <h3 class="text-lg font-semibold text-gray-900">The West Progo Regency</h3>
+              <p class="text-sm text-gray-600 flex items-center">
+                <i class="fas fa-map-marker-alt text-gray-500 mr-1"></i>
+                Kulon Progo, Yogyakarta
+              </p>
+            </div>
+          </div>
+
+          <a href="https://www.linkedin.com/in/gilang-gr/" target="_blank" rel="noopener noreferrer">
+            <section
+              class="cursor-pointer absolute -bottom-16 lg:left-[80%] left-[50%] -translate-x-1/2 bg-white rounded-xl p-4 min-w-[290px] shadow-md space-x-2 flex items-start transition hover:shadow-lg">
+              <img
+                src="https://avatars.githubusercontent.com/u/68853366?s=400&u=9406c521bcf97da67ce7111f2b91761d7c90c9f9&v=4"
+                alt="Gilang Ramadhan" class="w-16 h-16 rounded-full border-2 border-white shadow-md" />
+              <div class="flex flex-col">
+                <p class="text-lg font-semibold text-gray-900">Gilang Ramadhan</p>
+                <p class="text-sm text-gray-600">Real Estate Agent</p>
+                <p class="text-[12px] font-bold text-gray-800 mt-4">
+                  <i class="fas fa-phone-alt text-custom-orange-500 mr-2"></i>
+                  +62 0851 5541 7522
+                </p>
+                <p class="text-[12px] font-bold text-gray-800 mt-2">
+                  <i class="fas fa-envelope text-custom-orange-500 mr-2"></i>
+                  initial.gr.101@gmail.com
+                </p>
+              </div>
+            </section>
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/2 text-center lg:text-left p-4 sm:p-0 mt-20 lg:mt-0">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+          Expert Guidance Every Step of the Way
+        </h1>
+        <p class="text-base sm:text-lg text-gray-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
+          We're here to help! Whether you have questions about a property or need guidance through the buying process,
+          our experienced team is just a call or email away.
+        </p>
+        <button
+          class="bg-custom-orange-600 hover:bg-custom-orange-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-custom-orange-500 focus:ring-opacity-50">
+          Contact Sales
+        </button>
+      </div>
+    </section>
+
+    <section class="bg-[#ff9900] lg:mt-32">
+      <div class="md:pl-8 flex flex-col md:flex-row items-center justify-between relative text-center md:text-left">
+        <div class="text-white max-w-xl z-10 mb-8 md:mb-0 md:pl-12 px-6">
+          <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-6 mt-10 md:mt-0">
+            Find Your Perfect <br class="hidden sm:inline">
+            Property Is Just A <br class="hidden sm:inline">
+            Click Away!
+          </h1>
+          <p class="text-base text-orange-200 mb-6">
+            Start Browse our property listings today and take the first step towards making your homeownership dreams
+            a reality.
+          </p>
+          <a href="#contact"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#ff9900] font-semibold rounded-md hover:bg-orange-100 transition">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+        </div>
+
+        <div class="w-full lg:w-1/2 md:flex md:justify-end relative">
+          <img src="img/contact-us.png" alt="Property Image"
+            class="shadow-xl w-full h-[250px] md:h-[350px] object-cover">
+
+          <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-2xl w-11/12 md:w-4/5 lg:w-3/5 z-20 text-start">
+            <form class="space-y-6">
+              <div>
+                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Enter your first name here"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
+              </div>
+
+              <div>
+                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Enter your last name here"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Your message for us..."
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm bg-custom-orange-600 hover:bg-custom-orange-800 text-white font-semibold focus:outline-none">
+                Submit message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white py-12 px-4 rounded-t-lg shadow-inner mt-20">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+      <div>
+        <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+          <i class="fa-solid fa-building text-orange-500"></i> <span
+            class="font-bold text-xl text-gray-800">KOSANA</span>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">Your trusted partner in finding your dream property.</p>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="#" class="text-gray-600 hover:text-custom-orange-600"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-600 hover:text-custom-orange-600"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-600 hover:text-custom-orange-600"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-600 hover:text-custom-orange-600"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold text-gray-800 mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-600">
+          <li><a href="#" class="hover:text-custom-orange-600">Home</a></li>
+          <li><a href="#" class="hover:text-custom-orange-600">About Us</a></li>
+          <li><a href="#" class="hover:text-custom-orange-600">Product</a></li>
+          <li><a href="#" class="hover:text-custom-orange-600">Mortgage</a></li>
+          <li><a href="#" class="hover:text-custom-orange-600">Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-gray-800 mb-4">Contact Us</h4>
+        <ul class="space-y-2 text-gray-600">
+          <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Property St, Realty City, 12345</li>
+          <li><i class="fas fa-phone mr-2"></i> +1 (234) 567-8900</li>
+          <li><i class="fas fa-envelope mr-2"></i> info@kosana.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-gray-800 mb-4">Newsletter</h4>
+        <p class="text-gray-600 mb-4">Stay updated with our latest listings and offers.</p>
+        <form class="flex">
+          <input type="email" placeholder="Your email"
+            class="p-2 rounded-l-lg border border-gray-300 flex-grow focus:outline-none">
+          <button type="submit"
+            class="bg-custom-orange-600 text-white p-2 rounded-r-lg hover:bg-custom-orange-700 transition duration-300">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-12">
+      &copy; 2025 KOSANA. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

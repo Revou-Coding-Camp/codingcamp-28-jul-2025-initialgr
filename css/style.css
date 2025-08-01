@@ -1,0 +1,183 @@
+/* ========= Custom Orange Color Palette ========= */
+:root {
+  --custom-orange-50: #fff8e6;
+  --custom-orange-100: #ffedb3;
+  --custom-orange-200: #ffe080;
+  --custom-orange-300: #ffd34d;
+  --custom-orange-400: #ffc61a;
+  --custom-orange-500: #ffb900;
+  --custom-orange-600: #ff9900;
+  /* default */
+  --custom-orange-700: #cc7a00;
+  --custom-orange-800: #995c00;
+  --custom-orange-900: #663d00;
+}
+
+/* ========= Text Colors ========= */
+.text-custom-orange-50 {
+  color: var(--custom-orange-50);
+}
+
+.text-custom-orange-100 {
+  color: var(--custom-orange-100);
+}
+
+.text-custom-orange-200 {
+  color: var(--custom-orange-200);
+}
+
+.text-custom-orange-300 {
+  color: var(--custom-orange-300);
+}
+
+.text-custom-orange-400 {
+  color: var(--custom-orange-400);
+}
+
+.text-custom-orange-500 {
+  color: var(--custom-orange-500);
+}
+
+.text-custom-orange-600,
+.text-custom-orange {
+  color: var(--custom-orange-600);
+}
+
+.text-custom-orange-700 {
+  color: var(--custom-orange-700);
+}
+
+.text-custom-orange-800 {
+  color: var(--custom-orange-800);
+}
+
+.text-custom-orange-900 {
+  color: var(--custom-orange-900);
+}
+
+/* ========= Background Colors ========= */
+.bg-custom-orange-50 {
+  background-color: var(--custom-orange-50);
+}
+
+.bg-custom-orange-100 {
+  background-color: var(--custom-orange-100);
+}
+
+.bg-custom-orange-200 {
+  background-color: var(--custom-orange-200);
+}
+
+.bg-custom-orange-300 {
+  background-color: var(--custom-orange-300);
+}
+
+.bg-custom-orange-400 {
+  background-color: var(--custom-orange-400);
+}
+
+.bg-custom-orange-500 {
+  background-color: var(--custom-orange-500);
+}
+
+.bg-custom-orange-600,
+.bg-custom-orange {
+  background-color: var(--custom-orange-600);
+}
+
+.bg-custom-orange-700 {
+  background-color: var(--custom-orange-700);
+}
+
+.bg-custom-orange-800 {
+  background-color: var(--custom-orange-800);
+}
+
+.bg-custom-orange-900 {
+  background-color: var(--custom-orange-900);
+}
+
+/* ========= Border Colors ========= */
+.border-custom-orange-50 {
+  border-color: var(--custom-orange-50);
+}
+
+.border-custom-orange-100 {
+  border-color: var(--custom-orange-100);
+}
+
+.border-custom-orange-200 {
+  border-color: var(--custom-orange-200);
+}
+
+.border-custom-orange-300 {
+  border-color: var(--custom-orange-300);
+}
+
+.border-custom-orange-400 {
+  border-color: var(--custom-orange-400);
+}
+
+.border-custom-orange-500 {
+  border-color: var(--custom-orange-500);
+}
+
+.border-custom-orange-600,
+.border-custom-orange {
+  border-color: var(--custom-orange-600);
+}
+
+.border-custom-orange-700 {
+  border-color: var(--custom-orange-700);
+}
+
+.border-custom-orange-800 {
+  border-color: var(--custom-orange-800);
+}
+
+.border-custom-orange-900 {
+  border-color: var(--custom-orange-900);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-section {
+  background-image: url('../img/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Using a subtle gradient overlay to improve text readability */
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(248, 250, 252, 0.1) 100%);
+}
+
+/* Updated: search-tab-active now only handles background and text color */
+.search-tab-active {
+  background-color: #ff9900;
+  /* Orange */
+  color: white;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
